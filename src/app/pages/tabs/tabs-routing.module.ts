@@ -30,7 +30,12 @@ const routes: Routes = [
         pathMatch: 'full'
       },
     ]
+  },
+  {
+    path: 'restaurants/:restaurantId',
+    loadChildren: () => import('./items/items.module').then( m => m.ItemsPageModule)
   }
+
 ];
 
 @NgModule({
