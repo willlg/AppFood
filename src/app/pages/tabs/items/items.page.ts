@@ -69,6 +69,7 @@ export class ItemsPage implements OnInit {
     uid:'dh1',
     cover: 'assets/imgs/img1.jpeg',
     name: 'Dom Henrique 1',
+    address: 'Guarapuava, PR',
     short_name: 'domhenrique1',
     cuisines:[
     'Almoço',
@@ -132,7 +133,7 @@ export class ItemsPage implements OnInit {
     })
   }
 
-  getItems(){
+  async getItems(){
     this.data={};
     let data : any = this.restaurants.filter(x => x.uid === this.id);
     this.data= data[0];
@@ -140,12 +141,13 @@ export class ItemsPage implements OnInit {
     this.categories = this.categories.filter(x => x.uid === this.id);
     this.cartData = {};
     this.storeData= {};
-    let cart: any = this.getCart();
+    let cart: any = await this.getCart();
+    console.log(cart)
     if(cart?.value){
       this.storeData = JSON.parse(cart.value);
-      if(this.id == this.storeData.uid && this.allItems.length > 0){
+      if(this.id == this.storeData.restaurant.uid && this.allItems.length > 0){
         this.allItems.forEach((element: any)=>{
-          this.storeData.item.forEach(ele =>{
+          this.storeData.items.forEach(ele =>{
             if(element.id != ele.id) return;
             element.quantity = ele.quantity;
           });
@@ -194,6 +196,7 @@ export class ItemsPage implements OnInit {
       this.cartData.totalPrice = 0;
       this.cartData.totalItem = 0;
     }
+    this.saveToCart();
   }
 
   async saveToCart(){
@@ -212,8 +215,8 @@ export class ItemsPage implements OnInit {
   async viewCart(){
     if(this.cartData.items && this.cartData.items.length > 0){
       await this.saveToCart();
-      this.router.navigate([this.router.url + '/cart']);
     }
+    this.router.navigate([this.router.url + '/cart']);
   }
 
   async getCart(){
