@@ -30,6 +30,6 @@
     <ion-list-header>
       <ion-label color="primary" *ngIf="!isLoading && (orders?.length > 0)">Últimos Pedidos</ion-label>
     </ion-list-header>
-    <app-account [orders]="orders"></app-account>
+    <app-Orders [orders]="orders"></app-Orders>
   </ion-list>
 </ion-content>
