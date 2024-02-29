@@ -40,29 +40,24 @@
     <ion-input type="text" placeholder="Alguma alteração? Vamos fazer nosso melhor"></ion-input>
   </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      <ion-label color="tertiary"><h5>Detalhes</h5></ion-label>
-    </ion-list-header>
-    <ion-item lines="none">
-      <ion-label>Total:</ion-label>
-        <ion-text slot="end " color="light">
-          {{model?.totalPrice}}
-        </ion-text>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label>Entrega:</ion-label>
-        <ion-text slot="end " color="dark">
-          {{model?.deliverycharge}}
-        </ion-text>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label>Total a Pagar:</ion-label>
-        <ion-text slot="end " color="dark">
-          {{model?.grandTotal}}
-        </ion-text>
-    </ion-item>
-  </ion-list>
+  <ion-list> 
+    <ion-list-header> 
+      <ion-label color="tertiary"><h5>Detalhes</h5></ion-label> 
+    </ion-list-header> 
+    <ion-item lines="none"> 
+      <ion-label>Total:</ion-label> 
+      <ion-text slot="end" color="dark">R$: {{model?.totalPrice}}</ion-text> 
+    </ion-item> 
+    <ion-item lines="none"> 
+      <ion-label>Entrega:</ion-label> 
+      <ion-text slot="end" color="dark">R$: {{model?.deliverycharge}}</ion-text> 
+    </ion-item> 
+    <ion-item lines="none"> 
+      <ion-label>Total a pagar:</ion-label> 
+      <ion-text slot="end" color="dark"><h5>R$: 
+{{model?.grandTotal}}</h5></ion-text> 
+    </ion-item> 
+  </ion-list> 
 </ion-content>
 
 <ion-footer>
